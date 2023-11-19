@@ -4,10 +4,31 @@
 |---|---|---|
 |[Novice High / 배열, 연결 리스트 / 단일 연결 리스트](https://www.codetree.ai/missions?missionId=6)|10xp|![어려움][hard]|
 
-
-
-
-
+----
+## 문제 이해:
+정렬된 두 연결리스트를 합쳐서 다시 정렬된 연결리스트를 만든다.
+- 잘못 생각했던 부분: 모든 원소들의 정렬을 고려하지 않고, 두 연결리스트의 tail과 head만 비교해서 연결하면 될 것이라고 생각했다.
+- 모든 원소들이 정렬되어야 하므로 노드를 head에서부터 한 개씩 꺼내서 비교해야한다.
+    - head에서부터 비교하는 이유는, SLL1, SLL2의 가장 작은 원소는 각각의 head에 위치하고 있기 때문이다.
+    - 그 다음으로 작은 원소는 head.next에 있는 원소이므로 node1 = node1.next (또는 node2 = node2.next)
+ 
+## 정답 코드 따라쳐보기:
+<pre>
+  <code>
+    function solution(SLL1, SLL2)
+      set result = empty SLL
+      node1 = SLL1.head
+      node2 = SLL2.head
+      while node1 != null or node2 != null
+        if node2 == null or (node1 != null and node1.data < node2.data)
+          result.insert_end(node1.data)
+          node1 = node1.next
+        else 
+          result.insert_end(node2.data)
+          node2 = node2.next
+      return result
+  </code>
+</pre>
 
 
 
