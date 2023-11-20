@@ -13,7 +13,7 @@ int main() {
         l.push_back(c);
     }
 
-    list<char>::iterator it = l.end();
+    list<char>::iterator it = l.end(); // 빵들의 맨 뒤
     char recipe;
     char s;
     for(int i=0; i<m; i++) {
@@ -27,6 +27,7 @@ int main() {
             it++;
         }
         else if (recipe == 'D'){
+            if (it==l.end()) continue;
             it=l.erase(it);
         }
         else if (recipe == 'P'){
