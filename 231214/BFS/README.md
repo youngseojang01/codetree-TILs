@@ -5,8 +5,9 @@
 |[Novice High / 그래프 탐색 / BFS 탐색](https://www.codetree.ai/missions?missionId=6)|10xp|![쉬움][easy]|
 
 
-
-
+# DFS vs BFS
+1. 같은 그래프에서 BFS와 DFS의 시간복잡도는 O(|V|+|E|)로 동일하다.
+2. BFS는 큐를 사용하여 구현한다. (DFS는 재귀)
 
 
 
