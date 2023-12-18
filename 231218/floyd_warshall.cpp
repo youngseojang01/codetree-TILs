@@ -1,11 +1,9 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 #define MAX 100000
 
 int main() {
   int graph[6][6];
-  int w[6];
 
   cout << "input: \n";
   for (int i=0; i<6; i++) {
