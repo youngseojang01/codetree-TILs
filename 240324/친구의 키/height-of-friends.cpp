@@ -6,6 +6,7 @@
 using namespace std;
 
 int n, m;
+vector<int> edges[MAX + 1]; // 인접 리스트
 vector<vector<int>> friends;
 
 bool visited[MAX + 1];
@@ -13,22 +14,18 @@ stack<int> order;
 
 void dfs(int here){
     visited[here] = true;
-    for (int there=0; there<friends.size(); there++) {
-        if (friends[here][there] && !visited[there]) dfs(there);
+
+    for (int i=0; i<edges[here].size(); i++){
+        int there = edges[here][i];
+        if (!visited[there]) dfs(there);
     }
 
     order.push(here);
 }
-//void topological() {
-//    int n = friends.size();
-//    
-//    for (int i=0; i<n; i++){
-//        if (!visited[i]) dfs(i);
-//    }
-//}
+
 void print() {
     for (int i=0; i<n; i++){
-        cout << order.top() + 1 << " ";
+        cout << order.top() << " ";
         order.pop();
     }
     cout << "\n";
@@ -37,14 +34,14 @@ void print() {
 int main() {
     cin >> n >> m;
 
-    friends = vector<vector<int>>(n, vector<int>(n, 0));
-    for (int i=0; i<m; i++){
+    for (int i=1; i<=m; i++){
         int from, to;
         cin >> from >> to;
-        friends[from - 1][to - 1] = 1;
+        edges[from].push_back(to);
     }
 
-    for (int i=0; i<n; i++){
+    // 위상 정렬 dfs
+    for (int i=1; i<=n; i++){
         if (!visited[i]) dfs(i);
     }
 
