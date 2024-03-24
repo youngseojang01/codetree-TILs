@@ -1,35 +1,33 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <stack>
 using namespace std;
 
 int n, m;
 vector<vector<int>> friends;
 
 vector<bool> visited;
-vector<int> order;
+stack<int> order;
 void dfs(int here){
     visited[here] = true;
     for (int there=0; there<friends.size(); there++) {
         if (friends[here][there] && !visited[there]) dfs(there);
     }
 
-    order.push_back(here);
+    order.push(here);
 }
 void topological() {
     int n = friends.size();
     visited = vector<bool>(n, false);
-    order.clear();
     
     for (int i=0; i<n; i++){
         if (!visited[i]) dfs(i);
     }
-
-    reverse(order.begin(), order.end());
 }
 void print() {
-    for (int i=0; i<order.size(); i++){
-        cout << order[i] + 1 << " ";
+    for (int i=0; i<n; i++){
+        cout << order.top() + 1 << " ";
+        order.pop();
     }
     cout << "\n";
 }
