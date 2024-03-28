@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <vector>
 using namespace std;
 
 int main() {
@@ -13,11 +14,11 @@ int main() {
     }
 
     int cnt = 1;
-    while(q.empty()){
+    while(!q.empty()){
         if (cnt == k){
             int fr = q.front();
             q.pop();
-            ans.push(fr);
+            ans.push_back(fr);
             cnt = 1;
         }
         else {
@@ -29,7 +30,7 @@ int main() {
     }
 
     for (int i=0; i<n; i++){
-        cout << ans[i];
+        cout << ans[i] << " ";
     }
     
     return 0;
